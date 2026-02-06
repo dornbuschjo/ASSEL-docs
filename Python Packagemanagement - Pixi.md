@@ -64,6 +64,7 @@ pixi install --frozen
 - ``pixi add --pypi`` to add packages to the manifest using pypi (triggers an install)
 - ``pixi install`` to install the env based on the manifest and lock
 - ``pixi remove`` to remove packages
+- ``pixi shell`` to manually activate the env in the current shell (if you don't use direnv auto-activation)
 
 
 ## Pixi + direnv auto-activation in bash terminal
