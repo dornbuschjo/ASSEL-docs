@@ -54,11 +54,19 @@ torchaudio = "==2.7.1"
 extra-index-urls = ["https://download.pytorch.org/whl/cu121"]
 index-strategy = "unsafe-best-match"
 ```
+## Create env from existing lock and toml
+```bash
+pixi install --frozen
+```
 
+## Basic usage
+- ``pixi add`` to add packages to the manifest using conda-forge (triggers an install)
+- ``pixi add --pypi`` to add packages to the manifest using pypi (triggers an install)
+- ``pixi install`` to install the env based on the manifest and lock
 - ``pixi remove`` to remove packages
 
 
-### Pixi + direnv auto-activation in bash terminal
+## Pixi + direnv auto-activation in bash terminal
 
 This sets up a workflow similar to conda auto-activation:
 
