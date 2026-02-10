@@ -11,13 +11,13 @@ Marten Guides:
 	- all kinds of technical info
 
 
-helpful bash commands
-add it to ``~/.bashrc``
+## Recommended setup for cluster usage
+add this to ``~/.bashrc``
 ```bash
-export HUGGINGFACE_TOKEN="my_token"
-export HF_TOKEN="${HUGGINGFACE_TOKEN}"
-export HF_API_TOKEN="${HUGGINGFACE_TOKEN}"
 export HUGGINGFACE_HUB_CACHE="/ceph/ssd/shared/hf_models"
+export HF_HUB_CACHE="${HUGGINGFACE_HUB_CACHE}"
+
+export HF_TOKEN_PATH="$HOME/.config/huggingface/token"
 
 # simplify nvidia-smi
 alias ismi='watch -d -n 0.5 nvidia-smi'
@@ -40,4 +40,28 @@ alias squeh200='watch -d -n 1 squeue -p gpu_h200'
 export MONGODB_USER='my_user'
 export MONGODB_PASSWORD='my_pw'
 export MONGODB_HOST='fs.daml.cit.tum.de:27017/'
+```
+
+### Register hf_token
+1) **Store the token in a private per-user file**:
+```bash
+mkdir -p "$HF_TOKEN_PATH"
+chmod 700 "$HF_TOKEN_PATH"
+```
+
+2) **One-time login** (writes token to the file):
+	- paste your token when prompted and you may decline adding it to git credentials
+```bash
+hf auth login
+chmod 600 "$HF_TOKEN_PATH"
+```
+
+3) **Quick verification** (Python):
+```bash
+python - <<'PY'
+from huggingface_hub import constants, hf_hub_download
+print("cache:", constants.HF_HUB_CACHE)
+print("token file:", constants.HF_TOKEN_PATH)
+print(hf_hub_download("gpt2", "config.json"))
+PY
 ```
