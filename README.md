@@ -1,4 +1,4 @@
-# ASSEL DoccN
+# ASSEL Docs
 
 This repository contains the documentation for best practices in research projects.
 
