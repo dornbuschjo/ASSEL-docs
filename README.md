@@ -1,4 +1,4 @@
-# OA-docu - OMEGA ALIGNMENT DOCUMENTATION
+# ASSEL DoccN
 
 This repository contains the documentation for best practices in research projects.
 
