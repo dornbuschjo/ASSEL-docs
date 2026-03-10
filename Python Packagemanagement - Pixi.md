@@ -66,8 +66,19 @@ pixi install --frozen
 - ``pixi remove`` to remove packages
 - ``pixi shell`` to manually activate the env in the current shell (if you don't use direnv auto-activation)
 
+## One time setup
+### Store envs in a central point with a lot of storage space
+```bash
+# put in ~/.bashrc
+export PIXI_CACHE_DIR=/bigstorage/pixi/cache
+export PIXI_HOME=/bigstorage/pixi/home
+```
+ run once:
+ ```bash
+ pixi config set --global detached-environments /bigstorage/pixi/envs
+ ```
 
-## Pixi + direnv auto-activation in bash terminal
+### Pixi + direnv auto-activation in bash terminal
 
 This sets up a workflow similar to conda auto-activation:
 
